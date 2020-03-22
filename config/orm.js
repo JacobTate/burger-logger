@@ -25,6 +25,27 @@ function objToSql(ob) {
   return arr.toString();
 }
 
+var orm = {
+  create: function(name){
+    var queryString = "INSERT INTO burgers (burger_name, devoured) VALUES ('??', FALSE);";
+console.log(queryString);
 
+    connection.query(queryString, [name],
+  function(err, data){
+    if(err) throw err;
+    console.log(data);
+    
+  });
+  },
+   eat: function(burgerID){
+var queryString = "update burgers set devoured = true where id = ?"
+connection.query(queryString, [burgerID],
+  function(err, data){
+    if(err) throw err;
+    console.log(data);
+    
+  });
+   }
+};
 
 module.exports = orm;
