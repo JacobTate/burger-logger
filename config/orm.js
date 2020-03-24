@@ -45,6 +45,14 @@ connection.query(queryString, [burgerID],
     console.log(data);
     
   });
+   },
+   showAll: function(cb){
+     queryString = "select * from burgers;"
+     connection.query(queryString, function(err, data){
+       if(err) throw err;
+       console.log(data);
+       cb(data)
+     })
    }
 };
 

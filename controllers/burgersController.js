@@ -10,6 +10,12 @@ router.get("/", function(req, res) {
 
 router.get("/burgers", function(req, res) {
   //FIXME:
+  burger.showAll(function(burger_data){
+  
+    res.render("index", {burger_data});
+  });
+
+ 
 });
 
 // post route -> back to index
