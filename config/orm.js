@@ -37,13 +37,13 @@ console.log(queryString);
     
   });
   },
-   eat: function(burgerID){
+   eat: function(burgerID, cb){
 var queryString = "update burgers set devoured = true where id = ?"
 connection.query(queryString, [burgerID],
   function(err, data){
     if(err) throw err;
     console.log(data);
-    
+    cb();
   });
    },
    showAll: function(cb){

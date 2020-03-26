@@ -1,8 +1,8 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-     eat: function (BurgerID) {
-         orm.eat(BurgerID)
+     eat: function (BurgerID, cb) {
+         orm.eat(BurgerID, cb)
      },
      create: function (BurgerName) {
          orm.create(BurgerName)
