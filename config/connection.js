@@ -1,5 +1,5 @@
-var mysql = require("mysql");
-require("dotenv").config();
+// var mysql = require("mysql");
+// require("dotenv").config();
 
 
 // var connection = mysql.createConnection({
@@ -9,8 +9,33 @@ require("dotenv").config();
 //   password: process.env.password,
 //   database: process.env.database
 // });
-var connection = mysql.createConnection(process.env.jaws_db);
+// var connection = mysql.createConnection(process.env.jaws_db);
 
+// connection.connect(function(err) {
+//   if (err) {
+//     console.error("error connecting: " + err.stack);
+//     return;
+//   }
+//   console.log("connected as id " + connection.threadId);
+// });
+
+// module.exports = connection;
+
+var mysql = require("mysql");
+require("dotenv").config();
+var connection;
+if( process.env.JAWSDB_URL ){
+  connection = mysql.createConnection(process.env.jaws_db);
+}
+else{
+  connection = mysql.createConnection({
+    host: "localhost",
+    port: 3306,
+    user: process.env.user,
+    password: process.env.password,
+    database: "burgers_db"
+  });
+};
 connection.connect(function(err) {
   if (err) {
     console.error("error connecting: " + err.stack);
@@ -18,5 +43,4 @@ connection.connect(function(err) {
   }
   console.log("connected as id " + connection.threadId);
 });
-
 module.exports = connection;
